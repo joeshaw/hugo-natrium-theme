@@ -14,7 +14,7 @@ $script:expectedVersionFull = Invoke-Command {hugo version}
 $script:expectedVersionShort = $expectedVersionFull.Split("-")[0].Replace("hugo v","")
 # Try Hugo prior to 0.81.0 version string format (fall through from replace above)
 $script:expectedVersionShort = $expectedVersionShort.Split("-")[0].Replace("Hugo Static Site Generator v","")
-$script:expectedFileandFolderCount = 140
+$script:expectedFileandFolderCount = 139
 $script:expectedPostsAll = 3
 $script:expectedPostsonFirstPage = 2
 $script:expectedPostsonSecondPage = 1
@@ -29,7 +29,7 @@ Describe 'Hugo Natrium Theme' {
     BeforeAll {
         # Apply the Hugo Natrium theme to the exampleSite
         New-Item -Path "$currentPath\themes" -Name "hugo-natrium-theme" -ItemType "Directory"
-        Copy-Item -Path "$((Get-Item $currentPath).Parent.FullName)\*" -Recurse -Destination "C:\Users\Neil\Documents\GitHub\hugo-natrium-theme\exampleSite\themes\hugo-natrium-theme" -Exclude "exampleSite"
+        Copy-Item -Path "$((Get-Item $currentPath).Parent.FullName)\*" -Recurse -Destination "$currentPath/themes/hugo-natrium-theme" -Exclude "exampleSite"
     }
     Context "Basic functionality" {
         It "Should create new posts without ERRORS when Hugo is executed" {
@@ -176,7 +176,7 @@ Describe 'Hugo Natrium Theme' {
             "$currentPath\public\about\index.html" | Should -Exist
         }
         It "Should render posts to the posts folder" {
-            Get-ChildItem -Path "$currentPath\public\post" | Where-Object { $_.Mode -eq "d-----" } | Measure-Object | select -ExpandProperty Count | Should -Be $expectedPostsAll
+            Get-ChildItem -Path "$currentPath\public\post" | Where-Object { $_.Mode -like "d*" } | Measure-Object | select -ExpandProperty Count | Should -Be $expectedPostsAll
         }
         It "Should render static content to the root folder" {
             "$currentPath\public\.gitkeep" | Should -Exist
