@@ -29,7 +29,7 @@ Describe 'Hugo Natrium Theme' {
     BeforeAll {
         # Apply the Hugo Natrium theme to the exampleSite
         New-Item -Path "$currentPath\themes" -Name "hugo-natrium-theme" -ItemType "Directory"
-        Copy-Item -Path "$((Get-Item $currentPath).Parent.FullName)\*" -Recurse -Destination "$currentPath/themes/hugo-natrium-theme" -Exclude "exampleSite"
+        Copy-Item -Path "$((Get-Item $currentPath).Parent.FullName)\*" -Recurse -Destination "$currentPath\themes\hugo-natrium-theme" -Exclude "exampleSite"
     }
     Context "Basic functionality" {
         It "Should create new posts without ERRORS when Hugo is executed" {
