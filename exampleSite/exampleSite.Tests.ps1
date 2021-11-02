@@ -167,7 +167,7 @@ Describe 'Hugo Natrium Theme' {
             $siteMap.urlset.url.loc | Should -Contain "https://example.org/post/extending-this-logic/"
         }
         It "Should render safe markdown (code box) on a specific page" {
-            Get-Content "$currentPath\public\post\the-beach-is-a-push\index.html" -Raw | Should -BeLike '*<pre><code>In ancient times a whapping*'
+            Get-Content "$currentPath\public\post\the-beach-is-a-push\index.html" -Raw | Should -BeLike '*<pre tabindex="0"><code>In ancient times a whapping*'
         }
         It "Should render unsafe markdown (html) on a specific page" {
             Get-Content "$currentPath\public\post\extending-this-logic\index.html" -Raw | Should -BeLike '*<font style="color:red">This markdown is unsafe</font>*'
@@ -194,5 +194,6 @@ Describe 'Hugo Natrium Theme' {
         Remove-Item -Path "$currentPath\public" -Recurse -Force
         Remove-Item -Path "$currentPath\resources" -Recurse -Force
         Remove-Item -Path "$currentPath\content\post\TestPost*" -Recurse -Force
+	Remove-Item -Path "$currentPath\.hugo_build.lock" -Force
     }
 }
