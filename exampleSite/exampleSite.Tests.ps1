@@ -10,10 +10,7 @@ $script:currentPath = (Split-Path -Parent $MyInvocation.MyCommand.Path)
 
 # Define test parameters (expected results)
 $script:expectedVersionFull = Invoke-Command {hugo version}
-# Try Hugo 0.81.0 and later version string format
-$script:expectedVersionShort = $expectedVersionFull.Split("-")[0].Replace("hugo v","")
-# Try Hugo prior to 0.81.0 version string format (fall through from replace above)
-$script:expectedVersionShort = $expectedVersionShort.Split("-")[0].Replace("Hugo Static Site Generator v","")
+$script:expectedVersionShort = $($expectedVersionFull.Split("-")[0].Replace("hugo v","")).Replace("Hugo Static Site Generator v","")
 $script:expectedFileandFolderCount = 139
 $script:expectedPostsAll = 3
 $script:expectedPostsonFirstPage = 2
@@ -30,6 +27,7 @@ Describe 'Hugo Natrium Theme' {
         # Apply the Hugo Natrium theme to the exampleSite
         New-Item -Path "$currentPath\themes" -Name "hugo-natrium-theme" -ItemType "Directory"
         Copy-Item -Path "$((Get-Item $currentPath).Parent.FullName)\*" -Recurse -Destination "$currentPath\themes\hugo-natrium-theme" -Exclude "exampleSite"
+	"*<meta name=""generator"" content=""Hugo $expectedVersionShort"" />*" > test.txt
     }
     Context "Basic functionality" {
         It "Should create new posts without ERRORS when Hugo is executed" {
@@ -130,7 +128,7 @@ Describe 'Hugo Natrium Theme' {
     }
     Context "Content validation" {
         It "Should contain the correct Hugo version (generator) on each page" {
-            Get-ChildItem -Path "$currentPath\public" -Recurse | where { $_.Name -like "*.html" -or $_.Name -like "*.xml" } | Get-Content | Where-Object { $_ -like "*<meta name=""generator"" content=""Hugo $expectedVersionShort"" />*" } | Measure-Object | select -ExpandProperty Count | Should -Be $expectedPageswithHugoVersion
+            Get-ChildItem -Path "$currentPath\public" -Recurse | where { $_.Name -like "*.html" -or $_.Name -like "*.xml" } | Get-Content | Where-Object { $_ -like "*<meta name=""generator"" content=""Hugo $expectedVersionShort""*" } | Measure-Object | select -ExpandProperty Count | Should -Be $expectedPageswithHugoVersion
         }
         It "Should render a valid RSS feed (XML)" {
             { [xml]$rssFeed = Get-Content "$currentPath\public\index.xml" } | Should -Not -Throw
