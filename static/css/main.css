@@ -407,7 +407,17 @@ blockquote {
 
 
 .fa {
-  font-family: 'FontAwesome';
+  font-family: 'FontAwesome Regular';
+  font-style: normal;
+}
+
+.fa-brands {
+  font-family: 'FontAwesome Brands';
+  font-style: normal;
+}
+
+.fa-solid {
+  font-family: 'FontAwesome Solid';
   font-style: normal;
 }
 
@@ -432,6 +442,11 @@ blockquote {
 
 .fa-twitter::before {
   content: "\f099";
+  padding-right: 5px;
+}
+
+.fa-mastodon::before {
+  content: "\f4f6";
   padding-right: 5px;
 }
 
