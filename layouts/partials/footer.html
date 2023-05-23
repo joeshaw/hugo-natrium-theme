@@ -2,7 +2,6 @@
         <ul class="footer-links">
           <li>
             <!-- <a href="{{ .Site.RSSLink }}" type="application/rss+xml" target="_blank"><i class="fa fa-rss"></i> {{ i18n "footerRSS" }}</a> -->
-            <a href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" type="application/rss+xml" target="_blank"><i class="fa fa-rss"></i> {{ i18n "footerRSS" }}</a>
           </li>
           <li>
             <a href="https://github.com/neil-sabol/hugo-natrium-theme"><i class="fa fa-github"></i> Code</a>
