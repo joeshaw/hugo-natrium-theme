@@ -1,9 +1,7 @@
       <footer class="footer">
         <ul class="footer-links">
           <li>
-            {{ with .OutputFormats.Get "rss" -}}
-              {{ printf `<link rel="%s" type="%s" href="%s" title="%s" target="_blank"><i class="fa fa-rss"></i> {{ i18n "footerRSS" }}</link>` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
-            {{ end -}}
+            <a href="/index.xml" type="application/rss+xml" target="_blank"><i class="fa fa-rss"></i> RSS</a>
           </li>
           <li>
             <a href="https://github.com/neil-sabol/hugo-natrium-theme"><i class="fa fa-github"></i> Code</a>
