@@ -573,8 +573,12 @@ blockquote {
 
 /* Poor man's dark mode */
 @media (prefers-color-scheme: dark) {
-	html {
-    filter: invert(100%) hue-rotate(180deg)
+  html {
+    background-color: #000000;
+  }
+
+	body {
+    filter: invert(100%) hue-rotate(180deg);
 	}
 
   /* Undo the inversion of images, videos, embeds and code blocks */
