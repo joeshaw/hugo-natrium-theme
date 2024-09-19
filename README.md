@@ -18,8 +18,7 @@ Changes introduced to make this theme compatible with the latest Hugo versions (
 * Replace *.Summary | html* with *.Summary | plainify | htmlUnescape* in layouts/rss.xml (fixes XML/RSS feed rendering issues)
 
 ```diff
--To use Natrium with older versions of Hugo (0.25 - 0.52),
--use the previous commit from mobybit
+-To use Natrium with older versions of Hugo (0.25 - 0.52), use the previous commit from mobybit
 ```
 Commit: ([c0906c9ec0878985af4cd86b0b083c5b8f1f78df](https://github.com/mobybit/hugo-natrium-theme/tree/c0906c9ec0878985af4cd86b0b083c5b8f1f78df))
 
