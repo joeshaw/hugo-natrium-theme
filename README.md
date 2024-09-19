@@ -14,6 +14,8 @@ Changes introduced to make this theme compatible with the latest Hugo versions (
 * Replace instances of *.RSSLink* with *.OutputFormats.Get "RSS"* (fixes: "*WARN Page.RSSLink is deprecated and will be removed in a future release. Use the Output Format's link.*")
 * Replace instances of *.Data.Pages* with *.Site.RegularPages* (fixes "*Error <.Paginate>: error calling Paginate: cannot convert type page.PagesGroup to Pages*")
 * Replace instances of *.Site.DisqusShortname* with *.Site.Config.Services.Disqus.Shortname* (fixes "*WARN deprecated: .Site.DisqusShortname was deprecated in Hugo v0.120.0 and will be removed in a future release.*")
+* Replace *paginate =* with *pagination.pagerSize* in config.toml (fixes "*WARN  deprecated: site config key paginate was deprecated in Hugo v0.128.0 and will be removed in a future release. Use pagination.pagerSize instead.*")
+* Replace *.Summary | html* with *.Summary | plainify | htmlUnescape* in layouts/rss.xml (fixes XML/RSS feed rendering issues)
 
 ```diff
 -To use Natrium with older versions of Hugo (0.25 - 0.52),
