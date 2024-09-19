@@ -4,7 +4,7 @@ title = "Natrium Theme"
 theme = "hugo-natrium-theme"
 preserveTaxonomyNames = true
 rssLimit = 10
-paginate = 2
+pagination.pagerSize = 2
 pygmentsCodefences = true
 pygmentsStyle = "native"
 
