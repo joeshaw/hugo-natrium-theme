@@ -188,10 +188,10 @@ Describe 'Hugo Natrium Theme' {
     }
     AfterAll {
         # Clean up
-        Remove-Item -Path "$currentPath\themes" -Recurse -Force
-        Remove-Item -Path "$currentPath\public" -Recurse -Force
-        Remove-Item -Path "$currentPath\resources" -Recurse -Force
-        Remove-Item -Path "$currentPath\content\post\TestPost*" -Recurse -Force
-	Remove-Item -Path "$currentPath\.hugo_build.lock" -Force
+        if(Test-Path "$currentPath\themes") { Remove-Item -Path "$currentPath\themes" -Recurse -Force }
+        if(Test-Path "$currentPath\public") { Remove-Item -Path "$currentPath\public" -Recurse -Force }
+        if(Test-Path "$currentPath\resources") { Remove-Item -Path "$currentPath\resources" -Recurse -Force }
+        if(Test-Path "$currentPath\content\post") { Remove-Item -Path "$currentPath\content\post\TestPost*" -Recurse -Force }
+	      if(Test-Path "$currentPath\.hugo_build.lock") { Remove-Item -Path "$currentPath\.hugo_build.lock" -Force }
     }
 }
