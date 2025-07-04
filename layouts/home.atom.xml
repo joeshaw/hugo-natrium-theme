@@ -6,8 +6,8 @@
   <updated>{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</updated>
   <id>{{ .Permalink }}</id>
   <title type="html">{{ if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} – {{ end }}{{ .Site.Title }}{{ end }}</title>
-  <author>{{ with .Site.Author.name }}
-    <name>{{.}}</name>{{end}}{{with .Site.Author.email }}
+  <author>{{ with .Site.Params.Author.name }}
+    <name>{{.}}</name>{{end}}{{with .Site.Params.Author.email }}
     <email>{{.}}</email>{{end}}
   </author>
   <icon>{{ .Permalink }}favicon.png</icon>
@@ -18,8 +18,8 @@
     <published>{{ .Date.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</published>
     <updated>{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" | safeHTML }}</updated>
     <id>{{ .Permalink }}</id>
-    <author>{{ with .Site.Author.name }}
-      <name>{{.}}</name>{{end}}{{with .Site.Author.email }}
+    <author>{{ with .Site.Params.Author.name }}
+      <name>{{.}}</name>{{end}}{{with .Site.Params.Author.email }}
       <email>{{.}}</email>{{end}}
     </author>
     {{- range .Params.tags }}
